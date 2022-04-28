@@ -32,11 +32,9 @@ public class PatientApplication {
 			service.saveNewRole("USER", "scrolling");
 
 			service.saveNewUser("admin", "admin", "admin");
-			service.saveNewUser("mitah", "0123", "0123");
 
 			service.addRoleToUser("admin", "ADMIN");
 			service.addRoleToUser("admin", "USER");
-			service.addRoleToUser("mitah", "USER");
 
 		};
 	}

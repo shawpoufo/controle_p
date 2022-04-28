@@ -30,7 +30,6 @@ public class SecurityController {
     {
         if(bindingResult.hasErrors()) 
         {
-            // model.addAttribute("model", signUpModel);
             return "signup";
         }
         else if(!signUpModel.getPassword().equals(signUpModel.getRePassword()))
@@ -40,9 +39,17 @@ public class SecurityController {
         }
         else
         {
-            serviceImpl.saveNewUser(signUpModel.getUsername(), signUpModel.getPassword(), signUpModel.getPassword());
-            serviceImpl.addRoleToUser(signUpModel.getUsername(), "USER");
-            return "redirect:/login";
+            if(serviceImpl.loadUserByUserName(signUpModel.getUsername()) == null)
+            {
+                serviceImpl.saveNewUser(signUpModel.getUsername(), signUpModel.getPassword(), signUpModel.getPassword());
+                serviceImpl.addRoleToUser(signUpModel.getUsername(), "USER");
+                return "redirect:/login";
+            }
+            else
+            {
+                model.addAttribute("passNotSame","mot de passe ou username existe déja veuillez le changer");
+                return "signup";
+            }
         }
     }
 }
