@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire patient</title>
+</head>
+<body>
+    <div layout:fragment="content1" class="container">
+        <form method="POST" th:action="@{save(page=${currentPage ?: 0},keyword=${keyword})}">
+            <input type="hidden" name="id" th:value="${patient.id}">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" id="nom" th:value="${patient.nom}">
+                <div class="form-text text-danger" th:errors="${patient.nom}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="dateNaissance" class="form-label">dateNaissance</label>
+                <input type="date" class="form-control" name="dateNaissance" id="dateNaissance" th:value="${patient.dateNaissance}">
+                <div class="form-text text-danger" th:errors="${patient.dateNaissance}"></div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name="malade" id="malade" th:checked="${patient.malade}">
+                <label for="malade" class="form-check-label">malade</label>
+                <spanc class="form-text text-danger" th:errors="${patient.malade}"></spanc>
+            </div>
+            <div class="mb-3">
+                <label for="score" class="form-label">score</label>
+                <input type="text" class="form-control" name="score" id="score" th:value="${patient.score}">
+                <!-- <input type="range" class="form-range" min="0" max="100" name="score" id="score" th:value="${patient.score}"> -->
+                <div class="form-text text-danger" th:errors="${patient.score}"></div>
+            </div>
+            <button type="submit"
+                th:text="${patient.id} ? 'Sauvegarder':'Ajouter'"
+                th:class="${patient.id} ? 'btn btn-warning' : 'btn btn-primary'"></button>
+        </form>
+    </div>
+</body>
+</html>
