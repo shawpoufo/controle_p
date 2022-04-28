@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class SignUpModel {
-    @NotEmpty @Size(min = 3 , max = 30)
+    @NotEmpty(message = "username obligatoire") @Size(min = 3 , max = 30,message = "la taille doit être entre 3 et 30 caractères")
     private String username;
-    @NotEmpty @Size(min = 6,max = 20)
+    @NotEmpty(message = "mot de passe obligatoire") @Size(min = 6,max = 20,message = "la taille doit être entre 6 et 20 caractères")
     private String password;
-    @NotEmpty @Size(min = 6,max = 20)
+    @NotEmpty(message = "re-mot de passe obligatoire") @Size(min = 6,max = 20,message = "la taille doit être entre 6 et 20 caractères")
     private String rePassword;
 }

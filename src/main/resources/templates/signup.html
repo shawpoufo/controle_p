@@ -21,12 +21,12 @@
                     <div class="form-text text-danger" th:errors="*{username}"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="fom-label">Password</label>
+                    <label for="password" class="fom-label">Mot de passe</label>
                     <input type="password" id="password" class="form-control" th:field="*{password}">
                     <div class="form-text text-danger" th:errors="*{password}"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="re-password" class="fom-label">Retaper password</label>
+                    <label for="re-password" class="fom-label">Retaper Mot de passe</label>
                     <input type="password" id="re-password" class="form-control" th:field="*{rePassword}">
                     <div class="form-text text-danger" th:errors="*{rePassword}"></div>
                     <div class="form-text text-danger" th:text="${passNotSame}"></div>

@@ -23,14 +23,14 @@ import lombok.NoArgsConstructor;
 public class Patient {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    @Size(min = 4,max = 40)
+    @NotEmpty(message = "le nom est obligatoire")
+    @Size(min = 4,max = 40 , message = "la taille du nom doit être entre 4 et 40 caractères")
     private String nom;
     @Temporal(TemporalType.DATE)
-    @NotNull
+    @NotNull(message = "date obligatoire")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateNaissance;
     private boolean malade; 
-    @DecimalMax("100")
+    @DecimalMax(value = "100",message = "valeur max est de 100")
     private int score;
 }

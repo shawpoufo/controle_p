@@ -34,7 +34,7 @@ public class SecurityController {
         }
         else if(!signUpModel.getPassword().equals(signUpModel.getRePassword()))
         {
-            model.addAttribute("passNotSame","re-password et password ne sont pas les même !");
+            model.addAttribute("passNotSame","re-mot de passe et le mot de passe doivent être cohérents !");
             return "signup";
         }
         else
